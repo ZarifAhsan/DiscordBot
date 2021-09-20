@@ -3,7 +3,7 @@ from discord.ext import commands
 import youtube_dl
 
 
-class tune():
+class tune(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -21,7 +21,7 @@ class tune():
     async def disconnect(self, ctx):
         await ctx.voice_client.disconnect()
 
-    @comands.command()
+    @commands.command()
     async def play(self, ctx, url):
         ctx.voice_client.stop()
         FFMPEG_OPTIONS = {'before_options':
@@ -50,4 +50,4 @@ class tune():
 
 
 def setup(client):
-    client.add_cog(music.client)
+    client.add_cog(tune(client))
